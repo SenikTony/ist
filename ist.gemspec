@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |s|
   s.authors = ["Anton Senik"]
   s.date = "2022-08-02"
