@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
   s.name = "ist"
   s.required_ruby_version = ">= 2.7.6"
   s.summary = "Image scraping tool"
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 end
