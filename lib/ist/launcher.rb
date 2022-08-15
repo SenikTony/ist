@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "ist/log_writer"
+
 module Ist
   # Launch scrap process
   class Launcher
@@ -14,10 +16,18 @@ module Ist
     end
 
     def call
-      # prepare and check file by config
-      # raise error if bad file
-      # some another action (write loge, generate other errors, etc.)
-      puts "Launch!!!"
+      logger = Ist::LogWriter.new(stdout: $stdout)
+      logger.info_msg("Run scraper process")
+      # file = Document.new(config.file, logger)
+      # destination_folder = DestinationFolder.new(config.dir_name, logger)
+
+      # if file.valid? && destination_folder.valid?
+      #   Run scraper
+      #   Scraper.run(file, destination_folder, logger)
+      # else
+      #   Print validation error
+      #   logger.error_msg("Error message...")
+      # end
     end
   end
 end
