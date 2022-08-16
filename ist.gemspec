@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.license = "MIT"
   s.name = "ist"
   s.required_ruby_version = ">= 2.7.6"
+  s.add_runtime_dependency "marcel", "~> 1.0"
   s.summary = "Image scraping tool"
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 end
