@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "ist/log_writer"
+require "ist/document"
 
 module Ist
   # Launch scrap process
@@ -16,18 +17,24 @@ module Ist
     end
 
     def call
-      logger = Ist::LogWriter.new(stdout: $stdout)
-      logger.info_msg("Run scraper process")
-      # file = Document.new(config.file, logger)
       # destination_folder = DestinationFolder.new(config.dir_name, logger)
 
-      # if file.valid? && destination_folder.valid?
-      #   Run scraper
-      #   Scraper.run(file, destination_folder, logger)
-      # else
-      #   Print validation error
-      #   logger.error_msg("Error message...")
-      # end
+      if document.valid? # && destination_folder.valid?
+        logger.info_msg("Run scraper")
+        # Scraper.run(file, destination_folder, logger)
+      else
+        logger.error_msg(document.errors.full_messages)
+      end
+    end
+
+    private
+
+    def logger
+      @logger ||= Ist::LogWriter.new(stdout: $stdout)
+    end
+
+    def document
+      @document ||= Document.new(config.file, logger)
     end
   end
 end
